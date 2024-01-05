@@ -27,9 +27,9 @@
 
 #include "env_validate.h"
 
-#if HOTENDS > 1 || E_STEPPERS > 1
-  #error "Creality V4 only supports one hotend / E-stepper. Comment out this line to continue."
-#endif
+//#if HOTENDS > 1 || E_STEPPERS > 1
+//  #error "Creality V4 only supports one hotend / E-stepper. Comment out this line to continue."
+//#endif
 
 #ifndef BOARD_INFO_NAME
   #define BOARD_INFO_NAME      "Creality V4"
@@ -119,6 +119,13 @@
   #define E0_DIR_PIN                        PB3
 #endif
 #define E0_ENABLE_PIN               X_ENABLE_PIN
+
+//
+// Add custom stepper motor (dual z)
+//
+#define E1_ENABLE_PIN                       PC3 //(connect to ground to always enable)
+#define E1_STEP_PIN                         PA14 //SWCLK (STEP - pulled low)
+#define E1_DIR_PIN                          PA13 //SWIO  (DIR - pulled high)
 
 //
 // Release PB4 (Y_ENABLE_PIN) from JTAG NRST role
